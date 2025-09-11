@@ -6,15 +6,15 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                @if(auth()->user()->image)
+                @if(auth()->user()->image!=null)
                 <img src="{{asset(auth()->user()->image)}}" class="img-circle elevation-2" alt="User Image">
                 @else
-                <img src="{{asset(" dashboard/dist/img/user2-160x160.jpg")}}" class="img-circle elevation-2"
+                <img src="{{asset('dashboard/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2"
                     alt="User Image">
                 @endif
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{auth()->user()->name}}</a>
+                <a href="#" class="d-block">{{auth()->user()->first_name}} {{auth()->user()->last_name}}</a>
             </div>
         </div>
 
@@ -25,16 +25,37 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-header">EXAMPLES</li>
-
+                {{-- <li class="nav-header">EXAMPLES</li> --}}
+                @if(auth()->user()->hasPermission('dashboard-index'))
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link active">
+                    <a href="{{route('dashboard.index')}}" class="nav-link {{$class=='dashboard' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Widgets
+                            {{__('site.dashboard')}}
                         </p>
                     </a>
                 </li>
+                @endif
+                @if(auth()->user()->hasPermission('users-index'))
+                <li class="nav-item">
+                    <a href="{{route('users.index')}}" class="nav-link {{$class=='users' ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            {{__('site.users')}}
+                        </p>
+                    </a>
+                </li>
+                @endif
+                @if (auth()->user()->hasPermission('roles-index'))
+                <li class="nav-item">
+                    <a href="{{route('roles.index')}}" class="nav-link {{$class=='roles' ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            {{__('site.roles')}}
+                        </p>
+                    </a>
+                </li>
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

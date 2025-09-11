@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+        $user=User::create([
             'first_name' => 'Omar',
             'last_name' => 'Samy',
             'email' => 'osamy8088@gmail.com',
@@ -22,6 +22,8 @@ class UserSeeder extends Seeder
             'lang' => 'en',
             'type' => 'admin'
         ]);
+        $user->addRole('super_admin');
+
         // $user->addRole('super_admin');
         for ($i = 0; $i < 10; $i++) {
             User::create([

@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class DashboardController extends MainController
 {
+    public function __construct()
+    {
+        $this->middleware('permission:dashboard-index')->only('index');
+        $this->setClass('dashboard');
+    }
     public function index()
     {
         return view('admin.dashboard.index');

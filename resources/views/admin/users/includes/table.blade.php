@@ -1,4 +1,4 @@
-@include('admin.layouts.components.tables.header')
+@include('admin.layouts.components.tables.header',['model' => 'users', 'create' => true])
 @include('admin.layouts.components.tables.thead_info', [
 'columns' => ['ID', 'site.name','site.status', 'site.action']
 ])
