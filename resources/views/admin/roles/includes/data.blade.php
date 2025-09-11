@@ -5,7 +5,9 @@
         ["data" => $role, "model" => "roles",
         "edit" => true,
         "delete" => true,
-        // "show" => true
+        // "show" => true,
+
         ])
     </td>
 </tr>
+@include('admin.layouts.components.modal.delete',["model" => "roles", "data" => $role])
