@@ -19,13 +19,7 @@
       @include('admin.layouts.components.forms.inputs.text',
       ["name" => "last_name", "label" => "last_name",'id' => "last_name"])
     </div>
-    <div class="col-md-6">
-      @include('admin.layouts.components.forms.select.select2',[
-      'name' => 'role_id',
-      'label' => 'role',
-      'types' => $roles
-      ])
-    </div>
+
     <div class="col-md-6">
       @include('admin.layouts.components.forms.inputs.text',
       ["name" => "email", "label" => "email",'id' => "email"])
@@ -49,7 +43,7 @@
       @include('admin.layouts.components.forms.select.select2',[
       'name' => 'type',
       'label' => 'type',
-      'types' => ['admin' => 'Admin', 'user' => 'User']
+      'types' => ['admin' => 'Admin', 'user' => 'User',"instructor" => "Instructor"]
       ])
     </div>
     <div class="col-md-6">

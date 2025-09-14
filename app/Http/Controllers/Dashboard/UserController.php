@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Role;
 use App\Models\User;
 use App\Traits\ImageTrait;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Dashboard\MainController;
 use App\Http\Requests\Dashboard\UserRequest;
 
@@ -14,10 +12,7 @@ class UserController extends MainController
     use ImageTrait;
     public function __construct()
     {
-        $this->middleware('permission:users-index')->only('index');
-        $this->middleware('permission:users-store')->only('store', 'create');
-        $this->middleware('permission:users-update')->only('update', 'edit', 'show');
-        $this->middleware('permission:users-destroy')->only('destroy');
+
         $this->setClass('users');
     }
     /**
@@ -34,9 +29,8 @@ class UserController extends MainController
      */
     public function create()
     {
-        $roles = Role::pluck('name', 'id')->toArray();
 
-        return view('admin.users.create', compact('roles'));
+        return view('admin.users.create', );
     }
 
     /**
@@ -48,7 +42,6 @@ class UserController extends MainController
         $data = $request->except('image');
         $data['image'] = $this->uploadImage('users', $request);
         $user = User::create($data);
-        $user->addRoles([$request->role_id]);
         return redirect()->route('users.index')->with('success', __('site.added_successfully'));
     }
 
@@ -65,10 +58,8 @@ class UserController extends MainController
      */
     public function edit(string $id)
     {
-        $user = User::with('roles')->findOrFail($id);
-        $roles = Role::pluck('name', 'id')->toArray();
-        $userRole = $user->roles->pluck('id')->first();
-        return view('admin.users.edit', compact('user', 'roles', 'userRole'));
+        $user = User::findOrFail($id);
+        return view('admin.users.edit', compact('user' ));
     }
 
     /**
@@ -86,7 +77,6 @@ class UserController extends MainController
             $data['password'] = bcrypt($request->password);
         }
         $user->update($data);
-        $user->syncRoles([$request->role_id]);
         return redirect()->route('users.index')->with('success', __('site.updated_successfully'));
     }
 

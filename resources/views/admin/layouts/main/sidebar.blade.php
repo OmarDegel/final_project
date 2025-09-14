@@ -26,7 +26,6 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 {{-- <li class="nav-header">EXAMPLES</li> --}}
-                @if(auth()->user()->hasPermission('dashboard-index'))
                 <li class="nav-item">
                     <a href="{{route('dashboard.index')}}" class="nav-link {{$class=='dashboard' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-th"></i>
@@ -35,8 +34,6 @@
                         </p>
                     </a>
                 </li>
-                @endif
-                @if(auth()->user()->hasPermission('users-index'))
                 <li class="nav-item">
                     <a href="{{route('users.index')}}" class="nav-link {{$class=='users' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-th"></i>
@@ -45,17 +42,15 @@
                         </p>
                     </a>
                 </li>
-                @endif
-                @if (auth()->user()->hasPermission('roles-index'))
+
                 <li class="nav-item">
-                    <a href="{{route('roles.index')}}" class="nav-link {{$class=='roles' ? 'active' : ''}}">
+                    <a href="{{route('categories.index')}}" class="nav-link {{$class=='categories' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            {{__('site.roles')}}
+                            {{__('site.categories')}}
                         </p>
                     </a>
                 </li>
-                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

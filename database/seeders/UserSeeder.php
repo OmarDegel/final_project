@@ -22,9 +22,7 @@ class UserSeeder extends Seeder
             'lang' => 'en',
             'type' => 'admin'
         ]);
-        $user->addRole('super_admin');
 
-        // $user->addRole('super_admin');
         for ($i = 0; $i < 10; $i++) {
             User::create([
                 'first_name' => fake()->firstName(),

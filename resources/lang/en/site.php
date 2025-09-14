@@ -50,4 +50,13 @@ return [
     "deleted_successfully" => "Deleted successfully",
     "cant_delete_yourself" => "Can't delete yourself",
     "no_data_found" => "No data found",
+    "remember_me" => "Remember me",
+    "login" => "Login",
+    "inactive" => "Inactive",
+    "category" => "Category",
+    "categories" => "Categories",
+    "description[en]" => "Description in English",
+    "description[ar]" => "Description in Arabic",
+    "name[en]" => "Name in English",
+    "name[ar]" => "Name in Arabic",
 ];

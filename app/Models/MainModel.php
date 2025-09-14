@@ -11,7 +11,7 @@ class MainModel extends Model
     {
         $data = $this->name;
         if ($lang == null) {
-            $user = Auth::guard("api")->user();
+            $user = Auth::user();
             $lang = $user ? $user->lang : app()->getLocale();
             $defaultLang = app()->getLocale();
             return $data[$lang] ? $data[$lang] : $data[$defaultLang];

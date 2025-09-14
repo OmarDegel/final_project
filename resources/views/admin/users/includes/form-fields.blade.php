@@ -10,14 +10,7 @@
             @include('admin.layouts.components.forms.inputs.text',
             ["name" => "last_name", "label" => "last_name",'id' => "last_name",'value' => $user->last_name??null])
         </div>
-        <div class="col-md-6">
-            @include('admin.layouts.components.forms.select.select2',[
-            'name' => 'role_id',
-            'label' => 'role',
-            'types' => $roles,
-            'value' => $userRole??null
-            ])
-        </div>
+
         <div class="col-md-6">
             @include('admin.layouts.components.forms.inputs.text',
             ["name" => "email", "label" => "email",'id' => "email",'value' => $user->email??null])

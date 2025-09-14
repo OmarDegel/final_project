@@ -50,4 +50,14 @@ return [
     "deleted_successfully"=>"تم الحذف بنجاح",
     "cant_delete_yourself"=>"لا يمكنك حذف نفسك",
     "no_data_found"=>"لا توجد بيانات",
+    "remember_me"=>"تذكرني",
+    "login"=>"تسجيل الدخول",
+    "inactive"=>"غير مفعل",
+    "category"=>"القسم",
+    "categories"=>"الاقسام",
+    "description[en]"=>"الوصف بالانجليزية",
+    "description[ar]"=>"الوصف بالعربية",
+    "name[en]"=>"الاسم بالانجليزية",
+    "name[ar]"=>"الاسم بالعربية",
+
 ];

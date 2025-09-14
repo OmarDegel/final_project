@@ -9,7 +9,6 @@ class DashboardController extends MainController
 {
     public function __construct()
     {
-        $this->middleware('permission:dashboard-index')->only('index');
         $this->setClass('dashboard');
     }
     public function index()

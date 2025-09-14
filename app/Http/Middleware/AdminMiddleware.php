@@ -22,7 +22,7 @@ class AdminMiddleware
             View::share('locale', $user->lang);
             return $next($request);
         }else{
-            return redirect()->route('login.view');
+            return redirect()->route('login.view')->with('error', __("site.not_allowed"));
         }
     }
 }
