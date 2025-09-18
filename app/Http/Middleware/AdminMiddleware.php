@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -16,8 +17,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = auth()->user();
-        if ($user && $user->type == 'admin'  && $user->status) {
+        if(!session()->has('user')) {
+            return redirect()->route('login.view')->with('error', __("site.not_allowed"));
+        }
+        $user = User::find(session('user')->id);
+        if ($user && ($user->type == 'user' || $user->type == 'instructor')  && $user->status) {
             app()->setLocale($user->lang);
             View::share('locale', $user->lang);
             return $next($request);

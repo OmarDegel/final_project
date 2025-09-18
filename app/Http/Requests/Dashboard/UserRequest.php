@@ -22,11 +22,11 @@ class UserRequest extends FormRequest
      */
     public function rules(Request $request): array
     {
-        $userId = $request->input('id');
+        $userId = $this->route('user');
         return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'phone' => $userId ? 'required|string|regex:/^01[0125][0-9]{8}$/|unique:users,phone,' . $userId : 'required|string|regex:/^01[0125][0-9]{8}$/|unique:users,phone',
+            'phone' => $userId ? 'required|string|unique:users,phone,' . $userId : 'required|string|unique:users,phone',
             'email' => $userId ? 'required|string|email|unique:users,email,' . $userId : 'required|email|unique:users,email',
             'password' => $userId ? 'nullable|confirmed|min:8|max:32' : 'required|confirmed|min:8|max:32',
             "roles.*" => "required|exists:roles,id",

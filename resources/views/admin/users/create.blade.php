@@ -7,59 +7,17 @@
 @endsection
 @section("content")
 @include("admin.layouts.main.header_of_page", ["title" => "users"])
+
 @include('admin.layouts.components.messages.displayErrors')
+
 @include('admin.layouts.components.forms.create',["model" => "users"])
-<div class="card-body">
-  <div class="row">
-    <div class="col-md-6">
-      @include('admin.layouts.components.forms.inputs.text',
-      ["name" => "first_name", "label" => "first_name",'id' => "first_name"])
-    </div>
-    <div class="col-md-6">
-      @include('admin.layouts.components.forms.inputs.text',
-      ["name" => "last_name", "label" => "last_name",'id' => "last_name"])
-    </div>
 
-    <div class="col-md-6">
-      @include('admin.layouts.components.forms.inputs.text',
-      ["name" => "email", "label" => "email",'id' => "email"])
-    </div>
-    <div class="col-md-6">
-      @include('admin.layouts.components.forms.inputs.password',
-      ["name" => "password", "label" => "password",'id' => "password"])
-    </div>
-    <div class="col-md-6">
-      @include('admin.layouts.components.forms.inputs.password',
-      ["name" => "password_confirmation", "label" => "password_confirmation",'id' => "password_confirmation"])
-    </div>
-    <div class="col-md-6">
-      @include('admin.layouts.components.forms.select.select2',[
-      'name' => 'lang',
-      'label' => 'lang',
-      'types' => ['ar' => 'Arabic', 'en' => 'English']
-      ])
-    </div>
-    <div class="col-md-6">
-      @include('admin.layouts.components.forms.select.select2',[
-      'name' => 'type',
-      'label' => 'type',
-      'types' => ['admin' => 'Admin', 'user' => 'User',"instructor" => "Instructor"]
-      ])
-    </div>
-    <div class="col-md-6">
-      @include('admin.layouts.components.forms.inputs.text',
-      ["name" => "phone", "label" => "phone",'id' => "phone"])
-    </div>
-  </div>
-  @include('admin.layouts.components.forms.file.dropzoneimage', [
-  'name' => 'image',
-  ])
-</div>
+@include('admin.users.includes.form-fields')
 
-
-</div>
 @include('admin.layouts.components.buttons.submit')
+
 @include('admin.layouts.components.forms.form-close')
+
 @section("js")
 <script src="{{asset('dashboard/plugins/select2/js/select2.full.min.js')}}"></script>
 <script src="{{asset('dashboard/plugins/dropzone/min/dropzone.min.js')}}"></script>

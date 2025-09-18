@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'password' => '12345678',
             'phone' => '01019631989',
             'lang' => 'en',
-            'type' => 'admin'
+            'type' => 'instructor',
         ]);
 
         for ($i = 0; $i < 10; $i++) {
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 'phone' => fake()->phoneNumber(),
                 'password' => fake()->password(),
                 'lang' => 'en',
-                'type' => fake()->randomElement(['admin', 'user']),
+                'type' => fake()->randomElement(['instructor', 'user']),
             ]);
         }
     }

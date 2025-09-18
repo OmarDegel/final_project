@@ -28,7 +28,7 @@
         <p class="login-box-msg">{{__('site.login')}}</p>
         @include('admin.layouts.components.messages.displayErrors')
 
-        <form action="{{route("admin.login")}}" method="post">
+        <form action="{{route("login")}}" method="post">
           @csrf
           <div class="input-group mb-3">
             <input type="email" class="form-control" placeholder="{{__('site.email')}}" name="email">
@@ -46,15 +46,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-8">
-              <div class="icheck-primary">
-                <input type="checkbox" id="remember">
-                <label for="remember">
-                  {{__('site.remember_me')}}
-                </label>
-              </div>
-            </div>
+          
             <!-- /.col -->
             <div class="col-4">
               <button type="submit" class="btn btn-primary btn-block">Sign In</button>

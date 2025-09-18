@@ -59,4 +59,8 @@ return [
     "description[ar]" => "Description in Arabic",
     "name[en]" => "Name in English",
     "name[ar]" => "Name in Arabic",
+    "not_allowed" => "Not allowed",
+    "there_is_no_data" => "There is no data",
+    "course" => "Course",
+    "courses" => "Courses",
 ];

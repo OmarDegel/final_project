@@ -1,5 +1,4 @@
 <div class="card-body">
-    <input type="hidden" name="id" value="{{$user->id??null}}">
     <div class="row">
         <div class="col-md-6">
 

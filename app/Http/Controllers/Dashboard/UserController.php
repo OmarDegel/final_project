@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\User;
-use App\Traits\ImageTrait;
-use App\Http\Controllers\Dashboard\MainController;
+use App\Traits\MediaTrait;
 use App\Http\Requests\Dashboard\UserRequest;
+use App\Http\Controllers\Dashboard\MainController;
 
 class UserController extends MainController
 {
-    use ImageTrait;
+    use MediaTrait;
     public function __construct()
     {
 
@@ -30,7 +30,7 @@ class UserController extends MainController
     public function create()
     {
 
-        return view('admin.users.create', );
+        return view('admin.users.create',);
     }
 
     /**
@@ -40,7 +40,7 @@ class UserController extends MainController
     {
 
         $data = $request->except('image');
-        $data['image'] = $this->uploadImage('users', $request);
+        $data['image'] = $this->uploadFile('users', $request, 'image');
         $user = User::create($data);
         return redirect()->route('users.index')->with('success', __('site.added_successfully'));
     }
@@ -59,7 +59,7 @@ class UserController extends MainController
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-        return view('admin.users.edit', compact('user' ));
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -71,7 +71,7 @@ class UserController extends MainController
         $data = $request->except('image', 'password');
 
         // if ($request->hasFile('image')&& $request->image != $user->image) {
-            $data['image'] = $this->editImage($request, $user, 'users');
+        $data['image'] = $this->editFile($request, $user, 'users', 'image');
         // }
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
@@ -86,11 +86,11 @@ class UserController extends MainController
     public function destroy(string $id)
     {
         $user = User::findOrFail($id);
-        if($user==auth()->user()){
+        if ($user->id == session('user')->id) {
             return redirect()->route('users.index')->with('error', __('site.cant_delete_yourself'));
         }
-        if($user->image){
-            $this->deleteImage($user->image);
+        if ($user->image) {
+            $this->deleteFile($user->image);
         }
         $user->delete();
         return redirect()->route('users.index')->with('success', __('site.deleted_successfully'));

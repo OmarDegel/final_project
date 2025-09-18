@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
@@ -65,7 +66,7 @@ class ProfileController extends Controller
     public function changeLang($lang)
     {
 
-        $user = auth()->user();
+        $user = User::find(session('user')->id);
         $user->lang = $lang;
         $user->save();
         return redirect()->back();

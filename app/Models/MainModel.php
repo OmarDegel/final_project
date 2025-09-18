@@ -11,7 +11,7 @@ class MainModel extends Model
     {
         $data = $this->name;
         if ($lang == null) {
-            $user = Auth::user();
+            $user = User::find(session('user')->id);
             $lang = $user ? $user->lang : app()->getLocale();
             $defaultLang = app()->getLocale();
             return $data[$lang] ? $data[$lang] : $data[$defaultLang];
@@ -23,12 +23,11 @@ class MainModel extends Model
     {
         $data = $this->description;
         if ($lang == null) {
-            $user = Auth::guard("api")->user();
+            $user = User::find(session('user')->id);
             $lang = $user ? $user->lang : app()->getLocale();
             $defaultLang = app()->getLocale();
             return $data[$lang] ? $data[$lang] : $data[$defaultLang];
         }
         return $data[$lang] ?? null;
     }
-
 }
