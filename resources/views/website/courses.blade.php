@@ -11,7 +11,7 @@
 <body class="bg-primary-subtle">
   @include('website.layouts.navbar')
   <div class="container my-5">
-    <h1 class="mb-4 text-center">All Courses</h1>
+    <h1 class="mb-4 text-center">{{__("site.All Courses")}}</h1>
     <div class="row">
       @foreach($courses as $course)
       <div class="col-md-4 mb-4">
@@ -30,7 +30,7 @@
               @if($course->isEnrolled(session('user')->id))
               <button class="btn btn-primary" disabled>{{__("site.you are enrolled")}}</button>
               @elseif($course->seatsLeft > 0)
-              <button class="btn btn-primary">Enroll Now</button>
+              <button class="btn btn-primary">{{__("site.Enroll Now")}}</button>
               @else
               <button class="btn btn-primary" disabled>{{__("site.full")}}</button>
               @endif

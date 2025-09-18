@@ -15,19 +15,18 @@
   <!-- Hero Section -->
   <section class="bg-primary text-white text-center py-5">
     <div class="container">
-      <h1 class="display-4">Welcome to MasteryPath</h1>
+      <h1 class="display-4">{{__("site.Welcome to MasteryPath")}}</h1>
       <p class="lead">
-        Your gateway to learning the best online courses in tech, business,
-        and more.
+        {{__("site.Your gateway to learning the best online courses in tech, business, and more")}}.
       </p>
-      <a href="{{ route("courses") }}" class="btn btn-light btn-lg">Browse All Courses</a>
+      <a href="{{ route("courses") }}" class="btn btn-light btn-lg">{{__("site.Browse All Courses")}}</a>
     </div>
   </section>
 
   <!-- Featured Courses -->
   <section class="py-5">
     <div class="container">
-      <h2 class="text-center mb-4">new courses</h2>
+      <h2 class="text-center mb-4">{{__("site.new courses")}}</h2>
       <div class="row g-4">
         @foreach ($courses as $course)
 
@@ -61,12 +60,12 @@
 
       </div>
       <div class="text-center mt-4">
-        <a href="{{ route("courses") }}" class="btn btn-success btn-lg fixed-bottom">View All Courses</a>
+        <a href="{{ route("courses") }}" class="btn btn-success btn-lg ">{{__("site.View All Courses")}}</a>
       </div>
     </div>
   </section>
 
-  <footer class="bg-dark text-white text-center py-3">
+  <footer class="bg-dark text-white text-center py-3 fixed-bottom">
     <p class="mb-0">© 2025 CourseWise. All Rights Reserved.</p>
   </footer>
 

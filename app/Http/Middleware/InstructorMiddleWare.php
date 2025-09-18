@@ -15,7 +15,7 @@ class InstructorMiddleWare
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (session()->has('user') && session('user')->role === 'instructor') {
+        if (session()->has('user') && session('user')->type === 'instructor') {
             return $next($request);
         }
 

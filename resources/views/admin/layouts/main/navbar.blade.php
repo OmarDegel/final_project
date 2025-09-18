@@ -52,7 +52,7 @@
       </div>
     </li>
     <li class="nav-item dropdown">
-      <a href="{{route('home')}}" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">home</a>
+      <a href="{{route('home')}}" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">{{__("site.Home")}}</a>
     </li>
     
     {{-- change language --}}

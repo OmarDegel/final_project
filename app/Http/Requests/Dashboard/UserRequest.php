@@ -32,7 +32,6 @@ class UserRequest extends FormRequest
             "roles.*" => "required|exists:roles,id",
             "image" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
             "Lang" => "in:ar,en",
-            "type" => "required"
         ];
     }
 }

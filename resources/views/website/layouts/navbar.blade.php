@@ -8,13 +8,13 @@
       <ul class="navbar-nav ms-auto align-items-center">
 
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('home') }}">Home</a>
+          <a class="nav-link" href="{{ route('home') }}">{{__("site.Home")}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('courses') }}">Courses</a>
+          <a class="nav-link" href="{{ route('courses') }}">{{__("site.Courses")}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('about') }}">About</a>
+          <a class="nav-link" href="{{ route('about') }}">{{__("site.About")}}</a>
         </li>
 
         <!-- Dropdown المستخدم -->
