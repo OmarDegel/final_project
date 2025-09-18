@@ -83,7 +83,7 @@
                             <option value="user">user</option>
                         </select>
                     </div>
-                    
+                    <a href="{{route("login")}}" class="text-center">login</a>
                     <!-- /.col -->
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary btn-block">Sign In</button>

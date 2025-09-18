@@ -27,13 +27,14 @@ trait MediaTrait
 
     public function editFile($request, $obj, $folder, $type)
     {
+        // $user    //dsadas
         $fileUrl = $obj->$type ?? null;
 
         if ($request->hasFile($type)) {
             if ($fileUrl) {
                 $this->deleteFile($fileUrl);
             }
-            $fileUrl = $this->uploadImage($folder, $request, $type);
+            $fileUrl = $this->uploadFile($folder, $request, $type);
         }
 
         return $fileUrl;

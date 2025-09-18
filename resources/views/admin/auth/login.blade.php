@@ -46,7 +46,7 @@
               </div>
             </div>
           </div>
-          
+            <a href="{{route("register")}}" class="text-center">register</a>
             <!-- /.col -->
             <div class="col-4">
               <button type="submit" class="btn btn-primary btn-block">Sign In</button>
