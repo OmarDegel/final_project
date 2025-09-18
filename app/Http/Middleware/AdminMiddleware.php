@@ -21,7 +21,7 @@ class AdminMiddleware
             return redirect()->route('login.view')->with('error', __("site.not_allowed"));
         }
         $user = User::find(session('user')->id);
-        if ($user && ($user->type == 'user' || $user->type == 'instructor')  && $user->status) {
+        if ($user && ($user->type == 'user' || $user->type == 'instructor')) {
             app()->setLocale($user->lang);
             View::share('locale', $user->lang);
             return $next($request);

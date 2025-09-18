@@ -20,6 +20,7 @@ Route::get('register', [AuthController::class, 'registerPage'])->name('register.
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::group(['prefix' => 'dashboard'], function () {
     Route::fallback(function () {
         return redirect('/dashboard/home');
@@ -29,12 +30,14 @@ Route::group(['prefix' => 'dashboard'], function () {
     Route::group(['prefix' => 'profile'], function () {
         Route::get('change_lang/{lang}', [ProfileController::class, 'changeLang'])->name('profile.change.lang');
     });
-    Route::group(['middleware' => 'check.admin'], function () {
+    Route::group(['middleware' => 'check.auth'], function () {
         Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index');
 
         Route::resource('users', UserController::class)->only(['edit', 'update']);
 
-        Route::group(['middleware' => 'check.admin'], function () {
+        Route::group(['middleware' => 'check.auth'], function () {
+            Route::group(['middleware' => 'instructor'], function () {
+                
             Route::resource('categories', CategoryController::class);
             Route::get('categories/active/{category}', [CategoryController::class, 'categoryActive'])->name('categories.status');
 
@@ -42,6 +45,8 @@ Route::group(['prefix' => 'dashboard'], function () {
             Route::get('courses/active/{course}', [CourseController::class, 'courseActive'])->name('courses.status');
 
             Route::resource('enrollements', EnrollementController::class)->only(['index', 'destroy', 'store']);
+            });
+
             Route::resource("storage", StorageController::class)->only(['index', 'destroy']);
         });
     });

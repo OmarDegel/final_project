@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\User;
 use App\Models\Course;
 use App\Models\Category;
 use App\Traits\MediaTrait;
@@ -18,7 +19,11 @@ class CourseController extends MainController
     }
     public function index()
     {
-        $courses = Course::paginate(20);
+        $user=User::where('id',session('user')->id)->first();
+        $courses =$user->instructorCourses()->paginate(10);
+        if(session('user')->type == 'user'){
+            return redirect()->route('home');
+        }
         return view('admin.courses.index', compact('courses'));
     }
 
@@ -69,7 +74,12 @@ class CourseController extends MainController
      */
     public function edit(string $id)
     {
+        
         $course = Course::find($id);
+        $user=User::where('id',session('user')->id)->first();
+        if($user->type == 'user' && $user->id != $course->instructor_id){
+            return redirect()->route('home');
+        }
         $categories = Category::all()->mapWithKeys(function ($category) {
             return [$category->id => $category->namelang()];
         });
@@ -82,6 +92,10 @@ class CourseController extends MainController
     public function update(CourseRequest $request, string $id)
     {
         $course = Course::find($id);
+        $user=User::where('id',session('user')->id)->first();
+        if($user->type == 'user' && $user->id != $course->instructor_id){
+            return redirect()->route('home');
+        }
         $data = $request->except('image', 'video');
         if ($request->hasFile('image')) {
             $data['image'] = $this->editFile($request, $course, 'courses', 'image');
@@ -111,11 +125,5 @@ class CourseController extends MainController
         return redirect()->route('courses.index')->with("success", __("site.deleted_successfully"));
     }
 
-    public function courseActive($id)
-    {
-        $course = Course::find($id);
-        $course->status = !$course->status;
-        $course->save();
-        return redirect()->route('courses.index')->with("success", __("site.updated_successfully"));
-    }
+   
 }

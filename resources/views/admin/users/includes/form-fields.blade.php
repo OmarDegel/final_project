@@ -30,14 +30,7 @@
             'value' => $user->lang??null
             ])
         </div>
-        <div class="col-md-6">
-            @include('admin.layouts.components.forms.select.select2',[
-            'name' => 'type',
-            'label' => 'type',
-            'types' => ['admin' => 'Admin', 'user' => 'User'],
-            'value' => $user->type??null
-            ])
-        </div>
+        
         <div class="col-md-6">
             @include('admin.layouts.components.forms.inputs.text',
             ["name" => "phone", "label" => "phone",'id' => "phone",

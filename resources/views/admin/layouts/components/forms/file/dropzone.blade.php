@@ -19,7 +19,7 @@
         autoProcessQueue: false, // يمنع الرفع التلقائي
         uploadMultiple: false,
         maxFiles: 1,
-        maxFilesize: 2, // حجم الملف بالميجا
+        maxFilesize: 20, 
         acceptedFiles: ".jpeg,.jpg,.png,.gif",
         previewTemplate: previewTemplate,
         addRemoveLinks: true,

@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-primary-subtle">
-@include('website.layouts.navbar')
+  @include('website.layouts.navbar')
   <div class="container my-5">
     <h1 class="mb-4 text-center">All Courses</h1>
     <div class="row">
@@ -25,12 +25,17 @@
             <form action="{{ route('enrollements.store') }}" method="POST">
               @csrf
               <input type="hidden" name="course_id" value="{{ $course->id }}">
+              @if(session('user'))
+
               @if($course->isEnrolled(session('user')->id))
               <button class="btn btn-primary" disabled>{{__("site.you are enrolled")}}</button>
               @elseif($course->seatsLeft > 0)
               <button class="btn btn-primary">Enroll Now</button>
               @else
               <button class="btn btn-primary" disabled>{{__("site.full")}}</button>
+              @endif
+              @else 
+              <button class="btn btn-primary" disabled>{{__("site.login to enroll")}}</button>
               @endif
             </form>
 
@@ -43,7 +48,7 @@
 
   </div>
 
-  <footer class="bg-dark text-white text-center py-3">
+  <footer class="bg-dark text-white text-center py-3 ">
     <p>&copy; 2025 MasteryPath. All Rights Reserved.</p>
   </footer>
 

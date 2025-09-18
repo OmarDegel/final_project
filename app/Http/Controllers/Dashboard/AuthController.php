@@ -48,14 +48,14 @@ class AuthController extends Controller
             [
                 'first_name' => ['required', 'string', 'max:255'],
                 'last_name' => ['required', 'string', 'max:255'],
-                'phone' => ['required', 'string', 'unique:users,phone'],
+                'phone' => ['required', 'string', 'unique:users,phone','min:11','max:11'],
                 'email' => ['required', 'email', 'unique:users,email'],
                 'password' => ['required', 'confirmed', 'min:8', 'max:32'],
                 "Lang" => "in:ar,en",
                 "type" => "required"
             ]
         );
-        $data['password'] = bcrypt($data['password']);
+        $data['password'] = Hash::make($data['password']);
         $user=User::create($data);
         session()->put('user', $user);
         return redirect()->route('home')->with('success', __("site.added_successfully"));
