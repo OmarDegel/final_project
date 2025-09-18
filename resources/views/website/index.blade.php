@@ -20,7 +20,7 @@
         Your gateway to learning the best online courses in tech, business,
         and more.
       </p>
-      <a href="courses.html" class="btn btn-light btn-lg">Browse All Courses</a>
+      <a href="{{ route("courses") }}" class="btn btn-light btn-lg">Browse All Courses</a>
     </div>
   </section>
 
@@ -61,7 +61,7 @@
 
       </div>
       <div class="text-center mt-4">
-        <a href="{{ route("courses.index") }}" class="btn btn-success btn-lg">View All Courses</a>
+        <a href="{{ route("courses") }}" class="btn btn-success btn-lg fixed-bottom">View All Courses</a>
       </div>
     </div>
   </section>
